@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historias Clínicas - P.S. El Limón</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo-minsa.png" alt="Ministerio de Salud Perú" class="animated-logo">
+            <h1>DIRECCION REGIONAL DE SALUD TUMBES P.S EL LIMON</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <h2>HISTORIAS CLINICAS DEL P.S EL LIMON</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Ingrese Apellido Paterno, DNI o Nombre..." class="search-input">
+                <button id="searchButton" class="search-button">Buscar</button>
+            </div>
+            <input type="file" id="excelFileInput" accept=".xls,.xlsx" style="display: none;">
+            <label for="excelFileInput" class="upload-button">Cargar Archivo Excel</label>
+
+            <div id="loadingMessage" class="loading-message" style="display:none;">Cargando Excel...</div>
+        </section>
+
+        <section class="results-section">
+            <h3>Resultados de Búsqueda:</h3>
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>NRO</th>
+                            <th>APELLIDO PATERNO</th>
+                            <th>APELLIDO MATERNO</th>
+                            <th>NOMBRES</th>
+                            <th>DNI</th>
+                            <th>ZONA "A" LIMON POR EL CENTRO</th>
+                            <th>ZONA "B" LIMON POR EL COLEGIO LA RINCONADA</th>
+                            <th>ZONA "C" LA PALMA</th>
+                            <th>ZONA "D" EL PRADO</th>
+                            <th>NRO DE TRANSEUNTES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+            <p id="noResultsMessage" class="no-results-message" style="display:none;">No se encontraron resultados.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ministerio de Salud - Dirección Regional de Salud Tumbes</p>
+<p>&copy; 2025 ERICK - PIRU</p>
+    </footer>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+    </body>
+</html>
