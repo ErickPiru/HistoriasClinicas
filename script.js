@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingMessage.style.display = 'block';
 
     // Cargar el archivo Excel automáticamente
-    fetch('HISTORIAS%20CLINICAS.XLSX')
+    fetch('HISTORIAS.XLSX')
         .then(response => response.arrayBuffer())
         .then(data => {
             const workbook = XLSX.read(data, { type: 'array' });
