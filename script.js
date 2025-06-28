@@ -10,34 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar mensaje de carga
     loadingMessage.style.display = 'block';
 
-    // Cargar el archivo Excel automáticamente
-    fetch('HISTORIAS.xlsx')
+    // Cargar el Excel
+    fetch('historias.xlsx')
         .then(response => response.arrayBuffer())
         .then(data => {
             const workbook = XLSX.read(data, { type: 'array' });
             const hoja = workbook.Sheets[workbook.SheetNames[0]];
-            datos = XLSX.utils.sheet_to_json(hoja, { defval: "" });
+            datos = XLSX.utils.sheet_to_json(hoja, { defval: '' });
             loadingMessage.style.display = 'none';
         })
         .catch(error => {
             console.error('Error al cargar el archivo Excel:', error);
-            loadingMessage.textContent = 'Error al cargar el archivo Excel.';
+            loadingMessage.innerText = 'Error al cargar el archivo Excel.';
         });
 
-    // Función de búsqueda
+    // Búsqueda al hacer clic
     searchButton.addEventListener('click', () => {
-        const termino = searchInput.value.toLowerCase().trim();
+        const termino = searchInput.value.trim().toLowerCase();
         resultsTable.innerHTML = '';
         noResultsMessage.style.display = 'none';
 
         if (termino === '') return;
 
         const resultados = datos.filter(fila => {
-            return (
-                fila['APELLIDO PATERNO']?.toLowerCase().includes(termino) ||
-                fila['NOMBRES']?.toLowerCase().includes(termino) ||
-                String(fila['DNI'])?.includes(termino)
-            );
+            const ap = String(fila['APELLIDO PATERNO'] || '').trim().toLowerCase();
+            const nom = String(fila['NOMBRES'] || '').trim().toLowerCase();
+            const dni = String(fila['DNI'] || '').trim().toLowerCase();
+
+            return ap.includes(termino) || nom.includes(termino) || dni.includes(termino);
         });
 
         if (resultados.length === 0) {
