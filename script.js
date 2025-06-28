@@ -7,24 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingMessage = document.getElementById('loadingMessage');
     const noResultsMessage = document.getElementById('noResultsMessage');
 
-    // Mostrar mensaje de carga
     loadingMessage.style.display = 'block';
 
-    // Cargar el Excel
-    fetch('HISTORIAS.xlsx')
-        .then(response => response.arrayBuffer())
+    // Cargar JSON en vez de Excel
+    fetch('historias.json')
+        .then(response => response.json())
         .then(data => {
-            const workbook = XLSX.read(data, { type: 'array' });
-            const hoja = workbook.Sheets[workbook.SheetNames[0]];
-            datos = XLSX.utils.sheet_to_json(hoja, { defval: '' });
+            datos = data;
             loadingMessage.style.display = 'none';
         })
         .catch(error => {
-            console.error('Error al cargar el archivo Excel:', error);
-            loadingMessage.innerText = 'Error al cargar el archivo Excel.';
+            console.error('Error al cargar el archivo JSON:', error);
+            loadingMessage.innerText = 'Error al cargar el archivo de datos.';
         });
 
-    // Búsqueda al hacer clic
     searchButton.addEventListener('click', () => {
         const termino = searchInput.value.trim().toLowerCase();
         resultsTable.innerHTML = '';
@@ -56,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${fila['ZONA "C" LA PALMA'] || ''}</td>
                         <td>${fila['ZONA "D" EL PRADO'] || ''}</td>
                         <td>${fila['NRO DE TRANSEUNTES'] || ''}</td>
-                    </tr>
-                `;
+                    </tr>`;
                 resultsTable.innerHTML += filaHTML;
             });
         }
     });
 });
+
