@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingMessage.style.display = 'block';
 
     // Cargar el Excel
-    fetch('historias.xlsx')
+    fetch('HISTORIAS.xlsx')
         .then(response => response.arrayBuffer())
         .then(data => {
             const workbook = XLSX.read(data, { type: 'array' });
