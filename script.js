@@ -30,8 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resultados = datos.filter(fila => {
             const ap = String(fila['APELLIDO PATERNO'] || '').trim().toLowerCase();
-            const nom = String(fila['NOMBRES'] || '').trim().toLowerCase();
-            const dni = String(fila['DNI'] || '').trim().toLowerCase();
+            const nom = Strinlet datos = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const resultsTable = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
+    const loadingMessage = document.getElementById('loadingMessage');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+
+    loadingMessage.style.display = 'block';
+
+    // ✅ Cargar el archivo JSON (ya no Excel)
+    fetch('historias.json')
+        .then(response => response.json())
+        .then(data => {
+            datos = data;
+            loadingMessage.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo JSON:', error);
+            loadingMessage.innerText = 'Error al cargar el archivo de datos.';
+        });
+
+    searchButton.addEventListener('click', () => {
+        const termino = searchInput.value.trim().toLowerCase();
+        resultsTable.innerHTML = '';
+        noResultsMessage.style.display = 'none';
+
+        if (termino === '') return;
+
+        const resultados = datos.filter(fila => {
+            const ap = String(fila['APELLIDO PATERNO'] || '').toLowerCase();
+            const nom = String(fila['NOMBRES'] || '').toLowerCase();
+            const dni = String(fila['DNI'] || '').toLowerCase();
 
             return ap.includes(termino) || nom.includes(termino) || dni.includes(termino);
         });
@@ -58,4 +90,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
