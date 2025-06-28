@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingMessage.style.display = 'block';
 
     // ✅ Cargar JSON limpio
-    fetch('historias-limpio.json')
+    fetch('historias-limpio-final.json')
         .then(response => response.json())
         .then(data => {
             datos = data;
