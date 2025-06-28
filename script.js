@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar JSON en vez de Excel
     fetch('historias-limpio.json')
-        .then(response => response.json())
+  .then(response => response.json())
         .then(data => {
             datos = data;
             loadingMessage.style.display = 'none';
