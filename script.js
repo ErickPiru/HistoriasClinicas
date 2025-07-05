@@ -10,16 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingMessage.style.display = 'block';
 
     // ✅ Cargar JSON limpio
-    fetch('historias-limpio-final.json')
-        .then(response => response.json())
-        .then(data => {
-            datos = data;
-            loadingMessage.style.display = 'none';
-        })
-        .catch(error => {
-            console.error('Error al cargar el archivo JSON:', error);
-            loadingMessage.innerText = 'Error al cargar el archivo de datos.';
-        });
+   fetch('historias-limpio-final.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Aquí deberías procesar los datos y mostrarlos en el HTML
+    })
+    .catch(error => {
+        console.error('Error cargando JSON:', error);
+    });
 
     searchButton.addEventListener('click', () => {
         const termino = searchInput.value.trim().toLowerCase();
