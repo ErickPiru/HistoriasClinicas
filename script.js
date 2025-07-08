@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${fila['APELLIDO MATERNO'] || ''}</td>
                         <td>${fila['NOMBRES'] || ''}</td>
                         <td>${fila['DNI'] || ''}</td>
-                        <td>${fila['ZONA "A" LIMON  POR EL CENTRO'] || ''}</td> // ¡Asegúrate de poner DOS espacios aquí!
-                        <td>${fila['ZONA "B" LIMON  POR EL COLEGIO LA RINCONADA'] || ''}</td>
+                        <td>${fila['ZONA "A" LIMON  POR EL CENTRO'] || ''}</td>
+                        <td>${fila['ZONA "B" LIMON POR EL COLEGIO, LA RINCONADA'] || ''}</td>
                         <td>${fila['ZONA "C" LA PALMA'] || ''}</td>
                         <td>${fila['ZONA "D" EL PRADO'] || ''}</td>
                         <td>${fila['NRO DE TRANSEUNTES'] || ''}</td>
