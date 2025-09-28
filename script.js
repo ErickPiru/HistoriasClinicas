@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${fila['ZONA "A" LIMON  POR EL CENTRO'] || ''}</td>
                         <td>${fila['ZONA "B" LIMON POR EL COLEGIO, LA RINCONADA'] || ''}</td>
                         <td>${fila['ZONA "C" LA PALMA'] || ''}</td>
-                        <td>${fila['ZONA "D" EL PRADO'] || ''}</td>
+                        <td>${fila['ZONA "P" EL PRADO'] || ''}</td>
                         <td>${fila['NRO DE TRANSEUNTES'] || ''}</td>
                     </tr>`;
                 resultsTable.innerHTML += filaHTML;
@@ -58,5 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
